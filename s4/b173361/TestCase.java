@@ -16,7 +16,7 @@ interface FrequencerInterface {     // This interface provides the design for fr
 */
 
 /*
-package s4.specification;
+//package s4.specification;
 public interface InformationEstimatorInterface{
     void setTarget(byte target[]); // set the data for computing the information quantities
     void setSpace(byte space[]); // set data for sample space to computer probability
@@ -34,6 +34,7 @@ public class TestCase {
 	try {
 	    FrequencerInterface  myObject;
 	    int freq;
+        
 	    System.out.println("checking s4.b173361.Frequencer");
 	    myObject = new s4.b173361.Frequencer();
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
@@ -64,6 +65,11 @@ public class TestCase {
 	    myObject.setTarget("00".getBytes());
 	    value = myObject.estimation();
 	    System.out.println(">00 "+value);
+        
+        //correction
+        myObject.setTarget("001".getBytes());
+        value = myObject.estimation();
+        System.out.println(">001 "+value);
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
