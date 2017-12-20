@@ -42,6 +42,66 @@ public class TestCase {
 	    freq = myObject.frequency();
 	    System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
 	    if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        /* correction start */
+        // No target
+        FrequencerInterface  myObjectNotarget;
+        int freqNotarget;
+        
+        myObjectNotarget = new s4.b173361.Frequencer();
+        myObjectNotarget.setSpace("Hi Ho Hi Ho".getBytes());
+        freqNotarget = myObjectNotarget.frequency();
+        System.out.print("No target           ");
+        if(-1 == freqNotarget) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        // target length is 0
+        FrequencerInterface  myObjectTargetLength0;
+        int freqTargetLength0;
+        
+        myObjectTargetLength0 = new s4.b173361.Frequencer();
+        myObjectTargetLength0.setSpace("Hi Ho Hi Ho".getBytes());
+        myObjectTargetLength0.setTarget("".getBytes());
+        freqTargetLength0 = myObjectTargetLength0.frequency();
+        System.out.print("target length is 0    ");
+        if(-1 == freqTargetLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        // No space
+        FrequencerInterface  myObjectNospace;
+        int freqNospace;
+        
+        myObjectNospace = new s4.b173361.Frequencer();
+        myObjectNospace.setTarget("H".getBytes());
+        freqNospace = myObjectNospace.frequency();
+        System.out.print("No space            ");
+        if(0 == freqNospace) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        // space length is 0
+        FrequencerInterface  myObjectSpaceLength0;
+        int freqSpaceLength0;
+        
+        myObjectSpaceLength0 = new s4.b173361.Frequencer();
+        myObjectSpaceLength0.setSpace("".getBytes());
+        myObjectSpaceLength0.setTarget("H".getBytes());
+        freqSpaceLength0 = myObjectSpaceLength0.frequency();
+        System.out.print("Space length is 0     ");
+        if(0 == freqSpaceLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        
+        // Is it OK?
+        FrequencerInterface  myObject1;
+        int freq1;
+        
+        myObject1 = new s4.b173361.Frequencer();
+        myObject1.setSpace("HHHH".getBytes());
+        myObject1.setTarget("HH".getBytes());
+        freq1 = myObject1.frequency();
+        System.out.print("Is it OK?     ");
+        if(2 == freq1) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+
+
+        /* correction end */
+
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
@@ -66,10 +126,62 @@ public class TestCase {
 	    value = myObject.estimation();
 	    System.out.println(">00 "+value);
         
-        //correction
-        myObject.setTarget("001".getBytes());
+        /* correction start */
+        myObject.setTarget("8".getBytes());
         value = myObject.estimation();
-        System.out.println(">001 "+value);
+        System.out.println(">8 "+value);
+        /* correction end */
+        
+        
+        /* correction start */
+        // No target
+        InformationEstimatorInterface myObjectNotarget;
+        double valueNotarget;
+        myObjectNotarget = new s4.b173361.InformationEstimator();
+        myObjectNotarget.setSpace("3210321001230123".getBytes());
+
+        valueNotarget = myObjectNotarget.estimation();
+        System.out.print("No target           ");
+        if(0 == valueNotarget) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        
+        // target length is 0
+        InformationEstimatorInterface myObjectTargetLength0;
+        double valueTargetLength0;
+        myObjectTargetLength0 = new s4.b173361.InformationEstimator();
+        myObjectTargetLength0.setSpace("3210321001230123".getBytes());
+        
+        myObjectTargetLength0.setTarget("".getBytes());
+        valueTargetLength0 = myObjectTargetLength0.estimation();
+        System.out.print("target length is 0    ");
+        if(0 == valueTargetLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        
+        // true value is infinite
+        InformationEstimatorInterface myObjectInfinite;
+        double valueInfinite;
+        myObjectInfinite = new s4.b173361.InformationEstimator();
+        myObjectInfinite.setSpace("3210321001230123".getBytes());
+       
+        myObjectInfinite.setTarget("8".getBytes());
+        valueInfinite = myObjectInfinite.estimation();
+        System.out.print("true value is infinite    ");
+        if(Double.MAX_VALUE == valueInfinite) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
+        
+        // No space
+        InformationEstimatorInterface myObjectNospace;
+        double valueNospace;
+        myObjectNospace = new s4.b173361.InformationEstimator();
+       
+        myObjectNospace.setTarget("0".getBytes());
+        valueNospace = myObjectNospace.estimation();
+        System.out.print("No space    ");
+        if(Double.MAX_VALUE == valueNospace) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+        
+        
+        /* correction end */
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
