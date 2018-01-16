@@ -29,9 +29,9 @@ public class Frequencer implements FrequencerInterface{
     // The variable, "suffixArray" is the sorted array of all suffixes of mySpace.
     // Each suffix is expressed by a interger, which is the starting position in mySpace.
     // The following is the code to print the variable
-    //変数 "suffixArray"は、mySpaceのすべての接尾辞のソートされた配列です。
-    //各接尾辞はintergerで表され、これはmySpaceの開始位置です。
-    //以下は変数を出力するコードです
+    // 変数 "suffixArray"は、mySpaceのすべての接尾辞のソートされた配列です。
+    // 各接尾辞はintergerで表され、これはmySpaceの開始位置です。
+    // 以下は変数を出力するコードです
     
     private void printSuffixArray() {
         if(spaceReady) {
