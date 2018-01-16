@@ -51,7 +51,7 @@ public class TestCase {
         myObjectNotarget = new s4.b173361.Frequencer();
         myObjectNotarget.setSpace("Hi Ho Hi Ho".getBytes());
         freqNotarget = myObjectNotarget.frequency();
-        System.out.print("No target           ");
+        System.out.print("No target                 ");
         if(-1 == freqNotarget) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         // target length is 0
@@ -62,7 +62,7 @@ public class TestCase {
         myObjectTargetLength0.setSpace("Hi Ho Hi Ho".getBytes());
         myObjectTargetLength0.setTarget("".getBytes());
         freqTargetLength0 = myObjectTargetLength0.frequency();
-        System.out.print("target length is 0    ");
+        System.out.print("target length is 0            ");
         if(-1 == freqTargetLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         // No space
@@ -72,7 +72,7 @@ public class TestCase {
         myObjectNospace = new s4.b173361.Frequencer();
         myObjectNospace.setTarget("H".getBytes());
         freqNospace = myObjectNospace.frequency();
-        System.out.print("No space            ");
+        System.out.print("No space              ");
         if(0 == freqNospace) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         // space length is 0
@@ -83,7 +83,7 @@ public class TestCase {
         myObjectSpaceLength0.setSpace("".getBytes());
         myObjectSpaceLength0.setTarget("H".getBytes());
         freqSpaceLength0 = myObjectSpaceLength0.frequency();
-        System.out.print("Space length is 0     ");
+        System.out.print("Space length is 0             ");
         if(0 == freqSpaceLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         
@@ -95,7 +95,7 @@ public class TestCase {
         myObject1.setSpace("HHHH".getBytes());
         myObject1.setTarget("HH".getBytes());
         freq1 = myObject1.frequency();
-        System.out.print("Is it OK?     ");
+        System.out.print("Is it OK?             ");
         if(2 == freq1) { System.out.println("OK"); } else {System.out.println("WRONG"); }
 
 
@@ -141,7 +141,7 @@ public class TestCase {
         myObjectNotarget.setSpace("3210321001230123".getBytes());
 
         valueNotarget = myObjectNotarget.estimation();
-        System.out.print("No target           ");
+        System.out.print("No target                     ");
         if(0 == valueNotarget) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         
@@ -153,7 +153,7 @@ public class TestCase {
         
         myObjectTargetLength0.setTarget("".getBytes());
         valueTargetLength0 = myObjectTargetLength0.estimation();
-        System.out.print("target length is 0    ");
+        System.out.print("target length is 0                    ");
         if(0 == valueTargetLength0) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         
@@ -165,7 +165,7 @@ public class TestCase {
        
         myObjectInfinite.setTarget("8".getBytes());
         valueInfinite = myObjectInfinite.estimation();
-        System.out.print("true value is infinite    ");
+        System.out.print("true value is infinite            ");
         if(Double.MAX_VALUE == valueInfinite) { System.out.println("OK"); } else {System.out.println("WRONG"); }
         
         
@@ -176,7 +176,7 @@ public class TestCase {
        
         myObjectNospace.setTarget("0".getBytes());
         valueNospace = myObjectNospace.estimation();
-        System.out.print("No space    ");
+        System.out.print("No space                      ");
         if(Double.MAX_VALUE == valueNospace) { System.out.println("OK"); } else {System.out.println("WRONG"); }
 
         
