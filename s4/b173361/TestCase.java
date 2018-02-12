@@ -96,7 +96,7 @@ public class TestCase {
         myObject1.setTarget("HH".getBytes());
         freq1 = myObject1.frequency();
         System.out.print("Is it OK?             ");
-        if(2 == freq1) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        if(3 == freq1) { System.out.println("OK"); } else {System.out.println("WRONG"); }
 
 
 
@@ -178,9 +178,8 @@ public class TestCase {
         valueNospace = myObjectNospace.estimation();
         System.out.print("No space                      ");
         if(Double.MAX_VALUE == valueNospace) { System.out.println("OK"); } else {System.out.println("WRONG"); }
-
         
-        
+                
         /* correction end */
 	}
 	catch(Exception e) {

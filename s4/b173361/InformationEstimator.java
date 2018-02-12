@@ -16,7 +16,6 @@ public interface InformationEstimatorInterface{
 */
 
 public class InformationEstimator implements InformationEstimatorInterface{
-    // Code to tet, *warning: This code condtains intentional problem*
     boolean targetReady = false;
     boolean spaceReady = false;
     byte [] myTarget; // data to compute its information quantity
