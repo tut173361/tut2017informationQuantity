@@ -65,7 +65,6 @@ public class Frequencer implements FrequencerInterface{
                 l++;
                 r--;
             }
-            
         }
         // test
         //printSuffixArray();
