@@ -296,14 +296,6 @@ public class Frequencer implements FrequencerInterface{
     }
     
     public int frequency() {
-        // No target or target length is 0
-        if (myTarget == null || myTarget.length == 0) {
-            return -1;
-        }
-        // No space or space length is 0
-        if (mySpace == null || mySpace.length == 0) {
-            return 0;
-        }
         if(targetReady == false) return -1;
         if(spaceReady == false) return 0;
         return subByteFrequency(0, myTarget.length);

@@ -47,15 +47,6 @@ public class InformationEstimator implements InformationEstimatorInterface{
     }
     
     public double estimation(){
-        // No target or target length is 0
-        if (myTarget == null || myTarget.length == 0) {
-            return 0;
-        }
-        // No space
-        if (mySpace == null) {
-            return Double.MAX_VALUE;
-        }
-        
         if(targetReady == false) return (double) 0.0;
         if(spaceReady == false) return Double.MAX_VALUE;
         
