@@ -149,7 +149,7 @@ public class Frequencer implements FrequencerInterface{
          A:o Hi Ho
          */
         // teat
-        printSuffixArray();
+        //printSuffixArray();
         
     }
     
