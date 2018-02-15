@@ -112,6 +112,7 @@ public class Frequencer implements FrequencerInterface{
     public void setSpace(byte []space) {
         mySpace = space;
         if(mySpace.length>0) spaceReady = true;
+        else return;
         suffixArray = new int[space.length];
         // put all suffixes in suffixArray. Each suffix is expressed by one interger.
         //すべての接尾辞を接尾辞Arrayに入れます。 各接尾辞は整数で表されます。
