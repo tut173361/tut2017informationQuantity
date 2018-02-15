@@ -47,66 +47,66 @@ public class Frequencer implements FrequencerInterface{
     }
     
     //Quick sort
-    private void quick_sort(int left, int right) {
-        if (left>=right) {
-            return;
-        }
-        int p = (left+right)/2;
-        int l = left, r = right, tmp;
-        while(l<=r)  {
-            while(suffixCompare(l, p) == -1) { l++; }
-            while(suffixCompare(r, p) == 1) { r--; }
-            if (l<=r) {
-                tmp = suffixArray[l];
-                suffixArray[l] = suffixArray[r];
-                suffixArray[r] = tmp;
-                if (p==l) { p=r;}
-                if (p==r) { p=l;}
-                l++;
-                r--;
+    private void quick_sort(int left, int right)
+    {
+        int pivot, l_hold, r_hold;
+
+        l_hold = left;
+        r_hold = right;
+        pivot = suffixArray[left];
+        while (left < right)
+        {
+            while ((suffixCompare(suffixArray[right], pivot) >= 0) && (left < right))
+                right--;
+            if (left != right)
+            {
+                suffixArray[left] = suffixArray[right];
+                left++;
+            }
+            while ((suffixCompare(suffixArray[left], pivot) <= 0 )&&(left < right))
+                left++;
+            if (left != right)
+            {
+                suffixArray[right] = suffixArray[left];
+                right--;
             }
         }
-        // test
-        //printSuffixArray();
-        quick_sort(left, r);
-        quick_sort(l, right);
+        suffixArray[left] = pivot;
+        pivot = left;
+        left = l_hold;
+        right = r_hold;
+        if (left < pivot)
+            quick_sort(left, pivot-1);
+        if (right > pivot)
+            quick_sort(pivot+1, right);
     }
+
     
     private int suffixCompare(int i, int j) {
-        // comparing two suffixes by dictionary order.
-        // i and j denoetes suffix_i, and suffix_j
         // 辞書順で2つの接尾辞を比較する。
-        // iとjはsuffix_iとsuffix_jをデノートします
+        // iとjはsuffix_iとsuffix_jを示します
         
         // if suffix_i > suffix_j, it returns 1
         // if suffix_i < suffix_j, it returns -1
         // if suffix_i = suffix_j, it returns 0;
         
-        // It is not implemented yet,
-        // It should be used to create suffix array.
         // Example of dictionary order
-        //まだ実装されていませんが、
-        //接尾辞配列の作成に使用する必要があります。
         //辞書順の例
         
         // "i"  < "o"       : compare by code // コードで比較する
         // "Hi" < "Ho"      ; if head is same, compare the next element // headが同じなら、次の要素を比較する
         // "Ho" < "Ho "     ; if the prefix is identical, longer string is big // 接頭辞が同一であれば、長い文字列が大きい
-        int si = suffixArray[i];
-        int sj = suffixArray[j];
-        int s = 0;
-        if(si > s) s = si;
-        if(sj > s) s = sj;
-        int n = mySpace.length - s;
-        for(int k=0;k<n;k++) {
-            if(mySpace[si+k]>mySpace[sj+k]) return 1;
-            if(mySpace[si+k]<mySpace[sj+k]) return -1;
+        if (i == j) return 0;
+        int icnt = i;
+        int jcnt = j;
+        while (mySpace.length > icnt && mySpace.length > jcnt){
+            if(mySpace[icnt] < mySpace[jcnt]) return -1;
+            if(mySpace[icnt] > mySpace[jcnt]) return 1;
+            icnt ++;
+            jcnt++;
         }
-        if(si < sj) return 1;
-        if(si > sj) return -1;
-        
-        return 0;
-
+        if(icnt < jcnt) return 1;
+        else return -1;
     }
     
     public void setSpace(byte []space) {
@@ -149,7 +149,7 @@ public class Frequencer implements FrequencerInterface{
          A:o Hi Ho
          */
         // teat
-        //printSuffixArray();
+        printSuffixArray();
         
     }
     
@@ -305,7 +305,7 @@ public class Frequencer implements FrequencerInterface{
         Frequencer frequencerObject;
         try {
             frequencerObject = new Frequencer();
-            frequencerObject.setSpace("Hi Ho Hi Ho".getBytes());
+            frequencerObject.setSpace("                                                          Hi Ho Hi Ho".getBytes());
             frequencerObject.setTarget("H".getBytes());
             int result = frequencerObject.frequency();
             System.out.print("Include = "+ result+" ");
