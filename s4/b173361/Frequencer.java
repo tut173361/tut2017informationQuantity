@@ -111,30 +111,31 @@ public class Frequencer implements FrequencerInterface{
     
     public void setSpace(byte []space) {
         mySpace = space;
-        if(mySpace.length>0) spaceReady = true;
-        else return;
-        suffixArray = new int[space.length];
-        // put all suffixes in suffixArray. Each suffix is expressed by one interger.
-        //すべての接尾辞を接尾辞Arrayに入れます。 各接尾辞は整数で表されます。
-        for(int i = 0; i< space.length; i++) {
-            suffixArray[i] = i;
+        if(mySpace.length>0) {
+            spaceReady = true;
+            suffixArray = new int[space.length];
+            // put all suffixes in suffixArray. Each suffix is expressed by one interger.
+            //すべての接尾辞を接尾辞Arrayに入れます。 各接尾辞は整数で表されます。
+            for(int i = 0; i< space.length; i++) {
+                suffixArray[i] = i;
+            }
+            //        // buble sort
+            //        int subsuffix;
+            //        int ans = 0;
+            //        for(int i=0; i< space.length - 1 ; i++){
+            //            for(int j=0; j < space.length - i - 1; j++){
+            //                ans = suffixCompare(j, j+1);
+            //                if(ans == 1){
+            //                    subsuffix = suffixArray[j];
+            //                    suffixArray[j] = suffixArray[j+1];
+            //                    suffixArray[j+1] = subsuffix;
+            //                }
+            //            }
+            //        }
+            //Quick sort
+            quick_sort(0, suffixArray.length-1);
         }
-//        // buble sort
-//        int subsuffix;
-//        int ans = 0;
-//        for(int i=0; i< space.length - 1 ; i++){
-//            for(int j=0; j < space.length - i - 1; j++){
-//                ans = suffixCompare(j, j+1);
-//                if(ans == 1){
-//                    subsuffix = suffixArray[j];
-//                    suffixArray[j] = suffixArray[j+1];
-//                    suffixArray[j+1] = subsuffix;
-//                }
-//            }
-//        }
-        //Quick sort
-        quick_sort(0, suffixArray.length-1);
-
+        
         
         /* Example from "Hi Ho Hi Ho"
          0: Hi Ho

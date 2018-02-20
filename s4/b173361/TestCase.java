@@ -38,14 +38,19 @@ public class TestCase {
 	    System.out.println("checking s4.b173361.Frequencer");
 	    myObject = new s4.b173361.Frequencer();
         // test 1M
-//        byte[] testData = new byte[1000000];
-//        for(int i=0;i<testData.length;i++) testData[i] = 0;
-//        myObject.setSpace(testData);
-//	    myObject.setTarget("0000".getBytes());
-//	    freq = myObject.frequency();
-//	    System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
-//	    if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
-//        
+        byte[] spaceData = new byte[1000];
+        for(int i=0;i<spaceData.length;i++) spaceData[i] = 0;
+        myObject.setSpace(spaceData);
+        
+        byte[] targetData = new byte[10];
+        for(int i=0;i<targetData.length;i++) targetData[i] = 0;
+        myObject.setTarget(targetData);
+        
+	    freq = myObject.frequency();
+        System.out.println(freq);
+	    //System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+	    //if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+        
         /* correction start */
         // No target
         FrequencerInterface  myObjectNotarget;
