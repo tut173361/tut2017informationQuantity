@@ -110,6 +110,7 @@ public class Frequencer implements FrequencerInterface{
     }
     
     public void setSpace(byte []space) {
+        spaceReady = false;
         mySpace = space;
         if(mySpace.length>0) {
             spaceReady = true;
@@ -293,6 +294,7 @@ public class Frequencer implements FrequencerInterface{
     }
     
     public void setTarget(byte [] target) {
+        targetReady = false;
         myTarget = target;
         if(myTarget.length>0) targetReady = true;
     }
