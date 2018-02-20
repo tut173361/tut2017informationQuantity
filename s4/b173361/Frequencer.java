@@ -187,14 +187,15 @@ public class Frequencer implements FrequencerInterface{
         // "Ho"     <   "Ho" :"Ho"is not in the head of suffix "Ho" // "Ho"は接尾辞 "Ho"の頭にない
         // "Ho"     =   "H" : "H" is in the head of suffix "Ho" // "H"は接尾辞 "Ho"の頭にあります
         
-        if (suffixArray.length - suffixArray[i] < myTarget.length ) { return -1; }
+        if (suffixArray.length - suffixArray[i] < end - start ) { return -1; }
+        //System.out.println("####");
         // test
         //System.out.println(mySpace[suffixArray[i]] +  ":" + mySpace[i]);
-        for(int n = 0; n< (end - start); n++) {
-            
+        for(int n = 0; n < (end - start); n++) {
             if(myTarget[start+n] > mySpace[suffixArray[i]+n]) { return -1; }
+            //System.out.println("-1-1-1-1");
             if(myTarget[start+n] < mySpace[suffixArray[i]+n]) { return 1; }
-            
+            //System.out.println("1111111");
         }
         
         return 0;
@@ -208,12 +209,15 @@ public class Frequencer implements FrequencerInterface{
         // "Ho"の場合、 "Hi Ho Hi Ho"の場合は5を返します。
         // "Ho "の場合、 "Hi Ho Hi Ho"は6を返します。
         
-        int targetLength = myTarget.length;
         int spaceLength = mySpace.length;
         int startposition;
         
+        
+        //System.out.println("start:" + start);
+        //System.out.println("end:" + end);
         for(int offset = i; offset < spaceLength; offset++) {
             startposition = targetCompare(offset, start, end);
+            //System.out.println("offset:" + offset);
             if (startposition == 0) {
                 // test
                 //System.out.println("start:" + offset);
@@ -231,7 +235,6 @@ public class Frequencer implements FrequencerInterface{
         // "Ho"の場合、 "Hi Ho Hi Ho"の場合は7を返します。
         // "Ho "の場合、 "Hi Ho Hi Ho"の場合は7を返します。
         
-        int targetLength = myTarget.length;
         int spaceLength = mySpace.length;
         int startposition;
         for(int offset = i; offset >= 0; offset--) {
@@ -248,24 +251,27 @@ public class Frequencer implements FrequencerInterface{
     
     public int subByteFrequency(int start, int end) {
         /* This method could be defined as follows though it is slow.
-         //このメソッドは遅いですが、以下のように定義することができます。
-         int spaceLength = mySpace.length;
-         int count = 0;
-         for(int offset = 0; offset< spaceLength - (end - start); offset++) {
-            boolean abort = false;
-            for(int i = 0; i< (end - start); i++) {
-                if(myTarget[start+i] != mySpace[offset+i]) { abort = true; break; }
-            }
-            if(abort == false) { count++; }
-         }
-         */
+         //このメソッドは遅いですが、以下のように定義することができます。*/
+//         int spaceLength = mySpace.length;
+//         int count = 0;
+//         for(int offset = 0; offset< spaceLength - (end - start); offset++) {
+//            boolean abort = false;
+//            for(int i = 0; i< (end - start); i++) {
+//                if(myTarget[start+i] != mySpace[offset+i]) { abort = true; break; }
+//            }
+//            if(abort == false) { count++; }
+//         }
+//        printSuffixArray();
+//        for(int k=start;k<end;k++) { System.out.write(myTarget[k]); }
+//        System.out.printf(": count=%d\n", count);
+//        return count;
         
         int spaceLength = mySpace.length;
         //binary search
         int pLeft = 0;
         int pRight = spaceLength - 1;
         int center = 0;
-        int pibot;
+        int pibot = 0;
 
         while (pLeft <= pRight) {
             center = (pLeft + pRight) / 2;
@@ -282,11 +288,15 @@ public class Frequencer implements FrequencerInterface{
                 pRight = center - 1;
             }
         }
+        
 
+        // test
+        //System.out.println("pLeft:" + pLeft);
         int first = subByteStartIndex(pLeft, start,end);
         int last1 = subByteEndIndex(pRight, start, end);
         //inspection code
         //検査コード
+        //printSuffixArray();
         //for(int k=start;k<end;k++) { System.out.write(myTarget[k]); }
         //System.out.printf(": first=%d last1=%d\n", first, last1);
         
@@ -309,8 +319,8 @@ public class Frequencer implements FrequencerInterface{
         Frequencer frequencerObject;
         try {
             frequencerObject = new Frequencer();
-            frequencerObject.setSpace("                                                          Hi Ho Hi Ho".getBytes());
-            frequencerObject.setTarget("H".getBytes());
+            frequencerObject.setSpace("3210321001230123".getBytes());
+            frequencerObject.setTarget("123".getBytes());
             int result = frequencerObject.frequency();
             System.out.print("Include = "+ result+" ");
             if(4 == result) { System.out.println("OK"); }
